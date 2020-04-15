@@ -3,9 +3,9 @@ import convexHull
 import sorters
 import fn
 
-
+n = 100
 points = []
-fn.make_points(points)
+fn.make_points(points, n)
 
 print(*points)
 sorters.quick_sort(points, 0, len(points)-1)
