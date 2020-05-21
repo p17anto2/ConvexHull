@@ -8,11 +8,7 @@ def bubble_sort(p):
     for i in range(len(p)):
         swapped = False
         for j in range(0, len(p) - i - 1):
-            if p[j][0] > p[j + 1][0]:
-                p[j], p[j + 1] = p[j + 1], p[j]
-                swapped = True
-
-            elif p[j][0] == p[j + 1][0] and p[j][1] > p[j + 1][1]:
+            if p[j] > p[j + 1]:
                 p[j], p[j + 1] = p[j + 1], p[j]
                 swapped = True
         if not swapped:
@@ -39,7 +35,7 @@ def quick_sort(p, low, high):
 
 
 def insertion_sort(p):
-    for j in range(2, len(p)):
+    for j in range(1, len(p)):
         key = p[j]
         i = j - 1
         while i >= 0 and p[i][0] > key[0]:
@@ -79,3 +75,15 @@ def merge(left, right):
         else:
             merged.append(right.pop(0))
     return merged
+
+
+def choose_sorter(i, points):
+    if i == 0:
+        return bubble_sort(points)
+    elif i == 1:
+        return quick_sort(points, 0, len(points) - 1)
+    elif i == 2:
+        return insertion_sort(points)
+    elif i == 3:
+        return merge_sort(points)
+
