@@ -5,7 +5,7 @@ def convex_hull(p):
         while len(l_upper) > 2 and not right_turn(l_upper):
             l_upper.pop(-2)
 
-    l_lower = p[-2:]
+    l_lower = [p[-1], p[-2]]
     for i in range(len(p)-3, -1, -1):
         l_lower.append(p[i])
         while len(l_lower) > 2 and not right_turn(l_lower):
