@@ -33,20 +33,14 @@ def quick_sort(p, low, high):
         quick_sort(p, low, pi - 1)
         quick_sort(p, pi + 1, high)
 
-
-def insertion_sort(p):
-    for j in range(1, len(p)):
-        key = p[j]
-        i = j - 1
-        while i >= 0 and p[i][0] > key[0]:
-            p[i + 1] = p[i]
-            i -= 1
-        if p[i][0] == key[0] and p[i][1] > key[1]:
-            p[i + 1] = key
-            p[i], p[i + 1] = p[i + 1], p[i]
-        else:
-            p[i + 1] = key
-
+def selection_sort(points):
+    for i in range(len(points)):
+        pos = i
+        for j in range(i + 1, len(points)):
+            if points[pos] > points[j]:
+                pos = j
+        if pos != i:
+            points[i], points[pos] = points[pos], points[i]
 
 def merge_sort(p):
     if len(p) == 1:
@@ -83,7 +77,7 @@ def choose_sorter(i, points):
     elif i == 1:
         return quick_sort(points, 0, len(points) - 1)
     elif i == 2:
-        return insertion_sort(points)
+        return selection_sort(points)
     elif i == 3:
         return merge_sort(points)
 
